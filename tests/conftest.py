@@ -10,7 +10,7 @@ from selenium.webdriver.chrome.options import Options as ChromeOptions
 from selenium.webdriver.firefox.options import Options as FirefoxOptions
 from selenium.webdriver.edge.options import Options as EdgeOptions
 
-
+import tempfile
 def pytest_addoption(parser):
     parser.addoption(
         "--browser", action="store", default="chrome", help="Send 'chrome' or 'firefox' as parameter for execution"
@@ -28,6 +28,11 @@ def driver(request):
     if browser == "chrome":
         # Chrome options setup for headless mode
         chrome_options = ChromeOptions()
+
+        # 👇 Crea un perfil temporal de usuario único
+        user_data_dir = tempfile.mkdtemp()
+        chrome_options.add_argument(f'--user-data-dir={user_data_dir}')
+
         #chrome_options.add_argument('--headless')
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
