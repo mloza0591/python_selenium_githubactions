@@ -24,7 +24,7 @@ class TestLoginPage:
         actual_url = driver.current_url
         assert actual_url == "https://www.saucedemo.com/inventory.html"
 
-        time.sleep(2)
+        #time.sleep(2)
 
     @pytest.mark.parametrize("username, password, error", [
         ("locked_out_user", "secret_sauce", "Epic sadface: Sorry, this user has been locked out."),
