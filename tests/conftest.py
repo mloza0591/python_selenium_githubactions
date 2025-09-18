@@ -33,7 +33,7 @@ def driver(request):
         user_data_dir = tempfile.mkdtemp()
         chrome_options.add_argument(f'--user-data-dir={user_data_dir}')
 
-        #chrome_options.add_argument('--headless')
+        chrome_options.add_argument('--headless')
         chrome_options.add_argument('--no-sandbox')
         chrome_options.add_argument('--disable-dev-shm-usage')
 
